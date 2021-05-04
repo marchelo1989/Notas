@@ -8,7 +8,7 @@ package Cl.Burgos.Notas.FUN;
 /**
  *
  * @author march
- * 
+ * v1.10
  */
 public interface Confi {
     
@@ -18,9 +18,9 @@ public interface Confi {
     //Configuraciones para Update
     static String nameArchivo = "ApliNotas.zip";
     static String CarpetaUpdate = "";
-    static String Version = "1.1";
-    static String UrlVersion = "";
-    static String UrlDescarga = "";
+    static String Version = "1.2";
+    static String UrlVersion = "https://raw.githubusercontent.com/marchelo1989/Notas/main/Update/version.txt";
+    static String UrlDescarga = "https://raw.githubusercontent.com/marchelo1989/Notas/main/Update/Descargas.txt";
     
     static String Nombre="Prueba 1";
     static String Retraso="0";
