@@ -18,7 +18,7 @@ public interface Confi {
     //Configuraciones para Update
     static String nameArchivo = "ApliNotas.zip";
     static String CarpetaUpdate = "";
-    static String Version = "1.2";
+    static String Version = "1.3";
     static String UrlVersion = "https://raw.githubusercontent.com/marchelo1989/Notas/main/Update/version.txt";
     static String UrlDescarga = "https://raw.githubusercontent.com/marchelo1989/Notas/main/Update/Descargas.txt";
     

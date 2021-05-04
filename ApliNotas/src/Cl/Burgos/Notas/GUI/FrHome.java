@@ -5,13 +5,17 @@
  */
 package Cl.Burgos.Notas.GUI;
 
+import Cl.Burgos.Notas.DAO.DAOPuntos;
 import Cl.Burgos.Notas.ENT.ClNota;
+import Cl.Burgos.Notas.ENT.ClPuntos;
+import Cl.Burgos.Notas.FUN.Confi;
 import Cl.Burgos.Notas.FUN.ImprimirPDF;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.NumberFormat;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -21,11 +25,13 @@ import javax.swing.JTextField;
  */
 public class FrHome extends javax.swing.JFrame {
 
+    DAOPuntos dAOPuntos = new DAOPuntos();
     /**
      * Creates new form FrHome
      */
     public FrHome() {
         initComponents();
+//        rellenarPrueba();
         limpiar();
         setLocationRelativeTo(null);
         SLetras(txtNombre);
@@ -44,6 +50,23 @@ public class FrHome extends javax.swing.JFrame {
         SNumeros(txtApec1);
         SNumeros(txtApec2);
         
+    }
+    public void rellenarPrueba(){
+        txtNombre.setText(Confi.Nombre);
+        txtRetraso.setText(Confi.Retraso);
+        txtintro1.setText(Confi.intro1);
+        txtintro2.setText(Confi.intro2);
+        txtintro3.setText(Confi.intro3);
+        txtDesa1.setText(Confi.Desa1);
+        txtDesa2.setText(Confi.Desa2);
+        txtDesa3.setText(Confi.Desa3);
+        txtConclu1.setText(Confi.Conclu1);
+        txtConclu2.setText(Confi.Conclu2);
+        txtConclu3.setText(Confi.Conclu3);
+        txtBibli1.setText(Confi.Bibli1);
+        txtBibli2.setText(Confi.Bibli2);
+        txtApec1.setText(Confi.Apec1);
+        txtApec2.setText(Confi.Apec2);
     }
 
     public void SLetras(JTextField a){
@@ -158,11 +181,8 @@ public class FrHome extends javax.swing.JFrame {
 
         jLabel1.setText("Nombre:");
 
-        txtNombre.setText("JAVIER GONZALEZ ");
-
         jLabel2.setText("Retraso:");
 
-        txtRetraso.setText("0");
         txtRetraso.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtRetrasoKeyReleased(evt);
@@ -290,15 +310,9 @@ public class FrHome extends javax.swing.JFrame {
 
         jLabel5.setText("Planteo del problema:");
 
-        txtintro1.setText("3");
-
-        txtintro2.setText("3");
-
         jLabel6.setText("Definición de términos relevantes:");
 
         jLabel7.setText("Presentación de argumento central:");
-
-        txtintro3.setText("3");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -307,20 +321,19 @@ public class FrHome extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
-                            .addComponent(jLabel7))
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel5))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtintro2, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtintro3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jLabel3)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(86, 86, 86)
-                        .addComponent(txtintro1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtintro1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txtintro2, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtintro3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -346,15 +359,9 @@ public class FrHome extends javax.swing.JFrame {
 
         jLabel10.setText("Estructura y orden en la presentación:");
 
-        txtDesa1.setText("3");
-
-        txtDesa2.setText("3");
-
         jLabel11.setText("Calidad de los análisis:");
 
         jLabel12.setText("Relación con argumento central:");
-
-        txtDesa3.setText("4");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -402,15 +409,9 @@ public class FrHome extends javax.swing.JFrame {
 
         jLabel15.setText("Relación con el argumento inicial:");
 
-        txtConclu1.setText("4");
-
-        txtConclu2.setText("3");
-
         jLabel16.setText("Aportación personal:");
 
         jLabel17.setText("Relevancia para la discusión:");
-
-        txtConclu3.setText("3");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -457,11 +458,7 @@ public class FrHome extends javax.swing.JFrame {
 
         jLabel20.setText("Bibliografía:");
 
-        txtBibli1.setText("4");
-
         jLabel21.setText("Citas en texto:");
-
-        txtBibli2.setText("4");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -501,11 +498,8 @@ public class FrHome extends javax.swing.JFrame {
 
         jLabel24.setText("Ortografía:");
 
-        txtApec1.setText("4");
-
         jLabel25.setText("Extensión:");
 
-        txtApec2.setText("5");
         txtApec2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtApec2KeyReleased(evt);
@@ -656,22 +650,7 @@ public class FrHome extends javax.swing.JFrame {
 
     private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularActionPerformed
         // TODO add your handling code here:
-        double resp,nota,nota2,nota3,retraso;
-        resp=introduccion()+desarrollo()+concluciones()+bibliografia()+aspectosFormales();
-        txtPuntaje.setText(Double.toString(resp));
-        if(resp<7.5){
-            nota=3*resp/7.5+1;
-        }else{
-            nota=3*(resp-7.5)/5+4;
-        }
-        nota2=redondeoDecimales(nota,1);
-        txtNotaParcial.setText(Double.toString(nota2));
-        txtDesCuentoporRetraso.setText(txtRetraso.getText());
-        retraso=Double.parseDouble(txtRetraso.getText());
-        nota3=redondeoDecimales(nota2-retraso,1);
-
-        txtNotaEnsayo.setText(Double.toString(nota3));
-        btnGenerrarPDF.setEnabled(true);
+        Calcular();
     }//GEN-LAST:event_btnCalcularActionPerformed
 
     private void txtRetrasoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRetrasoKeyReleased
@@ -690,21 +669,32 @@ public class FrHome extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public void Calcular(){
-        double resp,nota,nota2,nota3,retraso;
-        resp=introduccion()+desarrollo()+concluciones()+bibliografia()+aspectosFormales();
-        txtPuntaje.setText(Double.toString(resp));
-        if(resp<7.5){
-            nota=3*resp/7.5+1;
-        }else{
-            nota=3*(resp-7.5)/5+4;
-        }
-        nota2=redondeoDecimales(nota,1);
-        txtNotaParcial.setText(Double.toString(nota2));
+        int intro,desa,conc,cita,form;
+        double puntaje,retraso,nota3;
+        
+        intro=introduccion()*20;
+        desa=desarrollo()*30;
+        conc=concluciones()*20;
+        cita=bibliografia()*10;
+        form=aspectosFormales()*20;
+        puntaje=intro+desa+conc+cita+form;
+        puntaje=puntaje*0.01;
+        puntaje=redondeoDecimales(puntaje,1);
+        
+        txtPuntaje.setText(Double.toString(puntaje));
+        
+        ClPuntos p = new ClPuntos(puntaje, 0);
+        double notap=nota(p);
+        //Revisar con BD Los puntos y notas
+        txtNotaParcial.setText(Double.toString(notap));
+
         txtDesCuentoporRetraso.setText(txtRetraso.getText());
         retraso=Double.parseDouble(txtRetraso.getText());
-        nota3=redondeoDecimales(nota2-retraso,1);
-
-        txtNotaEnsayo.setText(Double.toString(nota3));
+        nota3=redondeoDecimales(puntaje-retraso,1);
+        ClPuntos pe = new ClPuntos(nota3, 0);
+        double notape=nota(pe);
+        
+        txtNotaEnsayo.setText(Double.toString(notape));
         btnGenerrarPDF.setEnabled(true);
     }
     public void limpiar(){
@@ -735,69 +725,59 @@ public class FrHome extends javax.swing.JFrame {
         
         btnCalcular.setVisible(false);
     }
-    public double introduccion(){
-        int dato1,dato2,dato3,porcen;
-        double resp,porcen2;
+    public int introduccion(){
+        int dato1,dato2,dato3,puntos;
         dato1=Integer.parseInt(txtintro1.getText());
         dato2=Integer.parseInt(txtintro2.getText());
         dato3=Integer.parseInt(txtintro3.getText());
-//        porcen=Integer.parseInt(txtIntroduccion.getText());
-        porcen=20;
-        porcen2=(double)porcen/100;
-        resp=(dato1+dato2+dato3)*porcen2;
-        return resp;
+        puntos=(dato1+dato2+dato3);
+        return puntos;
     }
-    public double desarrollo(){
-        int dato1,dato2,dato3,porcen;
-        double resp,porcen2;
+    public int desarrollo(){
+        int dato1,dato2,dato3,puntos;
         dato1=Integer.parseInt(txtDesa1.getText());
         dato2=Integer.parseInt(txtDesa2.getText());
         dato3= Integer.parseInt(txtDesa3.getText());
-//        porcen=Integer.parseInt(txtDesarrollo.getText());
-        porcen=30;
-        porcen2=(double)porcen/100;
-        resp=(dato1+dato2+dato3)*porcen2;
-        return resp;
+        puntos=(dato1+dato2+dato3);
+        return puntos;
     }
-    public double concluciones(){
-        int dato1,dato2,dato3,porcen;
-        double resp,porcen2;
+    public int concluciones(){
+        int dato1,dato2,dato3,puntos;
         dato1=Integer.parseInt(txtConclu1.getText());
         dato2=Integer.parseInt(txtConclu2.getText());
         dato3=Integer.parseInt(txtConclu3.getText());
-//        porcen=Integer.parseInt(txtConclusiones.getText());
-        porcen=20;
-        porcen2=(double)porcen/100;
-        resp=(dato1+dato2+dato3)*porcen2;
-        return resp;
+        puntos=(dato1+dato2+dato3);
+        return puntos;
     }
-    public double bibliografia(){
-        int dato1,dato2,porcen;
-        double resp,porcen2;
+    public int bibliografia(){
+        int dato1,dato2,puntos;
         dato1=Integer.parseInt(txtBibli1.getText());
         dato2=Integer.parseInt(txtBibli2.getText());
 //        porcen=Integer.parseInt(txtBibliografia.getText());
-        porcen=10;
-        porcen2=(double)porcen/100;
-        resp=(dato1+dato2)*porcen2;
-        return resp;
+        puntos=(dato1+dato2);
+        return puntos;
     }
-    public double aspectosFormales(){
-        int dato1,dato2;
-        double resp,porcen,porcen2;
+    public int aspectosFormales(){
+        int dato1,dato2,puntos;
         dato1=Integer.parseInt(txtApec1.getText());
         dato2=Integer.parseInt(txtApec2.getText());
-//        porcen=Integer.parseInt(txtApectos.getText());
-        porcen=0.15;
-        porcen2=0.05;
-        resp=(dato1)*porcen+(dato2)*porcen2;
-        return resp;
+        puntos=dato1+dato2;
+        return puntos;
     }
     public static double redondeoDecimales(double numero, int numeroDecimales) {
-    BigDecimal redondeado = new BigDecimal(numero)
+        BigDecimal redondeado = new BigDecimal(numero)
                                 .setScale(numeroDecimales, RoundingMode.HALF_EVEN);
-    return redondeado.doubleValue();
-}
+        return redondeado.doubleValue();
+    }
+    public double nota(ClPuntos p){
+        List<ClPuntos> lista= dAOPuntos.Buscar(p);
+        double datos = 0;
+        for (int i = 0; i < lista.size(); i++) {
+            datos=lista.get(i).getNota();
+        }
+        return datos;
+    }
+    
     /**
      * @param args the command line arguments
      */

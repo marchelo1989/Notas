@@ -110,9 +110,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNombre">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="JAVIER GONZALEZ "/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
@@ -120,9 +117,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtRetraso">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="0"/>
-          </Properties>
           <Events>
             <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtRetrasoKeyReleased"/>
           </Events>
@@ -354,25 +348,24 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="txtintro2" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtintro3" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txtintro1" min="-2" pref="22" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="txtintro2" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtintro3" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
-                          <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
-                              <Component id="txtintro1" min="-2" pref="22" max="-2" attributes="0"/>
-                          </Group>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="13" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -415,14 +408,8 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtintro1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="3"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtintro2">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="3"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel6">
               <Properties>
@@ -435,9 +422,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtintro3">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="3"/>
-              </Properties>
             </Component>
           </SubComponents>
         </Container>
@@ -510,14 +494,8 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtDesa1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="3"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtDesa2">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="3"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel11">
               <Properties>
@@ -530,9 +508,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtDesa3">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="4"/>
-              </Properties>
             </Component>
           </SubComponents>
         </Container>
@@ -604,14 +579,8 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtConclu1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="4"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtConclu2">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="3"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel16">
               <Properties>
@@ -624,9 +593,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtConclu3">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="3"/>
-              </Properties>
             </Component>
           </SubComponents>
         </Container>
@@ -689,9 +655,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtBibli1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="4"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel21">
               <Properties>
@@ -699,9 +662,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtBibli2">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="4"/>
-              </Properties>
             </Component>
           </SubComponents>
         </Container>
@@ -764,9 +724,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtApec1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="4"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel25">
               <Properties>
@@ -774,9 +731,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtApec2">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="5"/>
-              </Properties>
               <Events>
                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtApec2KeyReleased"/>
               </Events>
