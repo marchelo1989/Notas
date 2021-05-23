@@ -6,8 +6,11 @@
 package Cl.Burgos.Notas.FUN;
 
 import java.awt.Desktop;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -19,7 +22,6 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-
 /**
  *
  * @author march
@@ -34,9 +36,11 @@ public class Actualizacion {
             con.connect();
             return true;
         }catch (MalformedURLException ex) {
+            Log.log("Error en Clase Actualizar: "+ex.getMessage());
             return false;
 //            Logger.getLogger(Actualizacion.class.getName()).log(Level.SEVERE, null, ex);
         }catch(IOException ex){
+            Log.log("Error en Clase Actualizar: "+ex.getMessage());
             return false;
 //            Logger.getLogger(Actualizacion.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -46,23 +50,22 @@ public class Actualizacion {
     public static String obtenerVersion(){
         try {
             URL url = new URL(Confi.UrlVersion);
-            URLConnection con = url.openConnection();
             return obtenerContenidoURL(url);
         } catch (MalformedURLException ex) {
-            Logger.getLogger(Actualizacion.class.getName()).log(Level.SEVERE, null, ex);
-        } catch(IOException ex){
+            Log.log("Error en Clase Actualizar: "+ex.getMessage());
             Logger.getLogger(Actualizacion.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
 
     //Es necesario otro metodo para teminar el anterior
-    private static String obtenerContenidoURL(URL url) {
+    public static String obtenerContenidoURL(URL url) {
         try {
             Scanner s = new Scanner(url.openStream()).useDelimiter("\\2");
             String contenido = s.next();
             return contenido;
         } catch (IOException ex) {
+            Log.log("Error en Clase Actualizar: "+ex.getMessage());
             Logger.getLogger(Actualizacion.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
@@ -73,6 +76,7 @@ public class Actualizacion {
         try {
             Desktop.getDesktop().browse(new java.net.URI(url));
         } catch (URISyntaxException | IOException ex) {
+            Log.log("Error en Clase Actualizar: "+ex.getMessage());
             Logger.getLogger(Actualizacion.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -128,13 +132,15 @@ public class Actualizacion {
               if (b != -1)
                 out.write(b);
             }
-            JOptionPane.showMessageDialog(null, datos);
+//            JOptionPane.showMessageDialog(null, datos);
             AbrirCarpeta();
             out.close();
             in.close();
         } catch (MalformedURLException e) {
+            Log.log("Error en Clase Actualizar: "+e.getMessage());
             JOptionPane.showMessageDialog(null, "la url: " + url + " no es valida!");
         } catch (IOException e) {
+            Log.log("Error en Clase Actualizar: "+e.getMessage());
             e.printStackTrace();
         }
         System.exit (0);
@@ -150,4 +156,38 @@ public class Actualizacion {
         }
         
     }
+    
+    
+    public static String muestraContenido(String archivo){
+        FileReader f = null;
+        String resp="";
+        try {
+            String cadena;
+            f = new FileReader(archivo);
+            BufferedReader b = new BufferedReader(f);
+            while((cadena = b.readLine())!=null) {
+                resp=cadena+"\n"+resp;
+//                System.out.println(cadena);
+            }   b.close();
+        } catch (FileNotFoundException ex) {
+            resp="Error en el archivo";
+            Log.log("Error en Clase Actualizar: "+ex.getMessage());
+            Logger.getLogger(Actualizacion.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            resp="Error en el archivo";
+            Log.log("Error en Clase Actualizar: "+ex.getMessage());
+            Logger.getLogger(Actualizacion.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                f.close();
+            } catch (IOException ex) {
+                resp="Error en el archivo";
+                Log.log("Error en Clase Actualizar: "+ex.getMessage());
+                Logger.getLogger(Actualizacion.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return resp;
+    }
+  
+
 }

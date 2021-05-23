@@ -1,2 +1,0 @@
-v1.1 Incio del proyecto
-v1.2 Protecto terminado calcula notas y genera informes en pdf sobre la nota

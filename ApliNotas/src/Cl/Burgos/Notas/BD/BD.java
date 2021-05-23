@@ -7,6 +7,7 @@ package Cl.Burgos.Notas.BD;
 
 //import Cl.Burgos.RepararPC.Log4j.Log;
 //import static Cl.Burgos.RepararPC.Inter.Confi.*;
+import Cl.Burgos.Notas.FUN.Log;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -49,12 +50,12 @@ public class BD {
             cnn = DriverManager.getConnection(myUrl, user, clave);
              stmt=cnn.createStatement();
         } catch (ClassNotFoundException ex) {
-//		    Log.log("Class Not Found " + ex.getMessage());
+		    Log.log("Clase no encontrada " + ex.getMessage());
 //                    log.info("Clase no Encontrada "+ex.getMessage());
 		    new Exception("Class Not Found" + ex.getMessage());
                     JOptionPane.showMessageDialog(null, "ERROR DE CONEXIÓN"+ex);
         } catch (SQLException ex) {
-//		   Log.log("Sql Conexion " + ex.getMessage());
+		   Log.log("Conexión SQL " + ex.getMessage());
 //                   log.info("Sql Conexion "+ex.getMessage());
 		   new Exception("Sql Conexion " + ex.getMessage());
                    JOptionPane.showMessageDialog(null, "SQL Conexion"+ex);
@@ -74,7 +75,7 @@ public class BD {
 			return resp;
 			
         } catch (SQLException ex) {
-//		    Log.log("Sql Ejecutar " + ex.getMessage());
+		    Log.log("Sql Ejecutar " + ex.getMessage());
 //                    log.info("Sql Ejecutar "+ex.getMessage());
 		    new Exception("Sql Ejecutar " + ex.getMessage());
 			return false;
@@ -87,7 +88,7 @@ public class BD {
             ResultSet rs= stmt.executeQuery(sql);
             return rs;
         } catch (SQLException ex) {
-//		    Log.log("Sql Select " + ex.getMessage());
+		    Log.log("Sql Select " + ex.getMessage());
 //                    log.info("Sql Select "+ex.getMessage());
 		    new Exception("Sql Select " + ex.getMessage());
         }
@@ -101,6 +102,7 @@ public class BD {
             con = DriverManager.getConnection(myUrl, user, clave);
 //            System.out.println("En linea");
         }catch(Exception ex){
+            Log.log("Error: " + ex.getMessage());
             new Exception("Error: " + ex.getMessage());
         }
         return con;

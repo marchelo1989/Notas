@@ -4,8 +4,12 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/GitHub/Notas/ApliNotas/src/Cl/Burgos/Notas/FUN/Confi.java</file>
+            <file>file:/D:/GitHub/Notas/ApliNotas/src/Cl/Burgos/Notas/BD/BD.java</file>
+            <file>file:/D:/GitHub/Notas/ApliNotas/src/Cl/Burgos/Notas/FUN/Actualizacion.java</file>
             <file>file:/D:/GitHub/Notas/ApliNotas/src/Cl/Burgos/Notas/GUI/FrHome.java</file>
             <file>file:/D:/GitHub/Notas/ApliNotas/src/Cl/Burgos/Notas/Main/ApliNotas.java</file>
+            <file>file:/D:/GitHub/Notas/ApliNotas/src/Cl/Burgos/Notas/FUN/Log.java</file>
+            <file>file:/D:/GitHub/Notas/ApliNotas/src/Cl/Burgos/Notas/GUI/FrUpdate.java</file>
         </group>
     </open-files>
 </project-private>

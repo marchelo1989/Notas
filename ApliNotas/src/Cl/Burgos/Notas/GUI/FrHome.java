@@ -8,6 +8,7 @@ package Cl.Burgos.Notas.GUI;
 import Cl.Burgos.Notas.DAO.DAOPuntos;
 import Cl.Burgos.Notas.ENT.ClNota;
 import Cl.Burgos.Notas.ENT.ClPuntos;
+import Cl.Burgos.Notas.FUN.Actualizacion;
 import Cl.Burgos.Notas.FUN.Confi;
 import Cl.Burgos.Notas.FUN.ImprimirPDF;
 import java.awt.event.KeyAdapter;
@@ -16,7 +17,11 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.NumberFormat;
 import java.util.List;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 /**
@@ -31,25 +36,45 @@ public class FrHome extends javax.swing.JFrame {
      */
     public FrHome() {
         initComponents();
+        setLocationRelativeTo(null);
+        setResizable(false); 
+        setTitle("Calcular Nota Version: "+Confi.Version);
+        String url="/Cl/Burgos/Notas/IMG/";
+        setIconImage(new ImageIcon(getClass().getResource(url+"nota.png")).getImage());
+        ((JPanel)getContentPane()).setOpaque(false);
+        ImageIcon MyImgCustom =new ImageIcon(this.getClass().getResource(url+"fondo.jpg"));
+        JLabel fondo= new JLabel();
+        
+        fondo.setIcon(MyImgCustom);
+        getLayeredPane().add(fondo,JLayeredPane.FRAME_CONTENT_LAYER);
+        fondo.setBounds(0,0,MyImgCustom.getIconWidth(),MyImgCustom.getIconHeight());
+        jPanel1.setOpaque(false);
+        jPanel2.setOpaque(false);
+        jPanel3.setOpaque(false);
+        jPanel4.setOpaque(false);
+        jPanel5.setOpaque(false);
+        jPanel6.setOpaque(false);
+        jPanel7.setOpaque(false);
+        jPanel8.setOpaque(false);
+        
 //        rellenarPrueba();
         limpiar();
-        setLocationRelativeTo(null);
-        SLetras(txtNombre);
-        SNumeros2(txtRetraso);
-        SNumeros(txtintro1);
-        SNumeros(txtintro2);
-        SNumeros(txtintro3);
-        SNumeros(txtDesa1);
-        SNumeros(txtDesa2);
-        SNumeros(txtDesa3);
-        SNumeros(txtConclu1);
-        SNumeros(txtConclu2);
-        SNumeros(txtConclu3);
-        SNumeros(txtBibli1);
-        SNumeros(txtBibli2);
-        SNumeros(txtApec1);
-        SNumeros(txtApec2);
-        
+        jMenuItem1.setVisible(Update());        
+    }
+    
+    public boolean Update(){
+        boolean resp;
+        if(Actualizacion.verificarConexion()){
+            if(Actualizacion.obtenerVersion().equals(Confi.Version)){
+                resp=false;
+            }else{
+                resp=true;                
+                JOptionPane.showMessageDialog(null, "Hay Actualizacion Disponible");
+            }
+        }else{
+            resp=false;
+        }
+        return resp;
     }
     public void rellenarPrueba(){
         txtNombre.setText(Confi.Nombre);
@@ -172,6 +197,11 @@ public class FrHome extends javax.swing.JFrame {
         txtApec1 = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
         txtApec2 = new javax.swing.JTextField();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -593,6 +623,39 @@ public class FrHome extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jMenu1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jMenu1.setText("Inicio");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jMenu2.setText("Ayuda");
+
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.ALT_MASK));
+        jMenuItem1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Cl/Burgos/Notas/IMG/Update.png"))); // NOI18N
+        jMenuItem1.setText("Actualizacion");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem1);
+
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK));
+        jMenuItem2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Cl/Burgos/Notas/IMG/Ayuda.png"))); // NOI18N
+        jMenuItem2.setText("Contacto");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem2);
+
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -668,6 +731,18 @@ public class FrHome extends javax.swing.JFrame {
         limpiar();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        new FrUpdate().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        new FrContacto().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
     public void Calcular(){
         int intro,desa,conc,cita,form;
         double puntaje,retraso,nota3;
@@ -724,6 +799,22 @@ public class FrHome extends javax.swing.JFrame {
         txtNotaEnsayo.setEditable(false);
         
         btnCalcular.setVisible(false);
+        
+        SLetras(txtNombre);
+        SNumeros2(txtRetraso);
+        SNumeros(txtintro1);
+        SNumeros(txtintro2);
+        SNumeros(txtintro3);
+        SNumeros(txtDesa1);
+        SNumeros(txtDesa2);
+        SNumeros(txtDesa3);
+        SNumeros(txtConclu1);
+        SNumeros(txtConclu2);
+        SNumeros(txtConclu3);
+        SNumeros(txtBibli1);
+        SNumeros(txtBibli2);
+        SNumeros(txtApec1);
+        SNumeros(txtApec2);
     }
     public int introduccion(){
         int dato1,dato2,dato3,puntos;
@@ -844,6 +935,11 @@ public class FrHome extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

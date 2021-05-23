@@ -120,12 +120,12 @@ public class ImprimirPDF {
         } catch (DocumentException ex) {
             JOptionPane.showMessageDialog(null,"Hubo un error"+ex.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);
 //            log.info(ex.getMessage());
-//            Log.log(ex.getMessage());
+            Log.log("Error en Clase ImprimirPDF: "+ex.getMessage());
            
         } catch (FileNotFoundException ex) {
             JOptionPane.showMessageDialog(null,"Hubo un error"+ex.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);
 //            log.info(ex.getMessage());
-//            Log.log(ex.getMessage());
+            Log.log("Error en Clase ImprimirPDF: "+ex.getMessage());
         }finally{
                 try {
                     if(System.getProperty("os.name").equals("Linux")){
@@ -142,7 +142,7 @@ public class ImprimirPDF {
                 catch (IOException ex) {
                     Logger.getLogger(ImprimirPDF.class.getName()).log(Level.SEVERE, null, ex);
 //                    log.info(ex.getMessage());
-//                    Log.log(ex.getMessage());
+                    Log.log("Error en Clase ImprimirPDF: "+ex.getMessage());
                 }
             }
 
@@ -346,11 +346,11 @@ public class ImprimirPDF {
         } catch (DocumentException ex) {
             JOptionPane.showMessageDialog(null,"Hubo un error"+ex.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);
 //            log.info(ex.getMessage());
-//            Log.log(ex.getMessage());
+            Log.log("Error en Clase ImprimirPDF: "+ex.getMessage());
         }   catch (FileNotFoundException ex) {
             Logger.getLogger(ImprimirPDF.class.getName()).log(Level.SEVERE, null, ex);
 //            log.info(ex.getMessage());
-//            Log.log(ex.getMessage());
+            Log.log("Error en Clase ImprimirPDF: "+ex.getMessage());
         }
         finally{
                 try {
@@ -368,7 +368,7 @@ public class ImprimirPDF {
                 catch (IOException ex) {
                     Logger.getLogger(ImprimirPDF.class.getName()).log(Level.SEVERE, null, ex);
 //                    log.info(ex.getMessage());
-//                    Log.log(ex.getMessage());
+                    Log.log("Error en Clase ImprimirPDF: "+ex.getMessage());
                 }
             }
 
@@ -730,6 +730,7 @@ public class ImprimirPDF {
         }
             
         } catch (IOException ex) {
+            Log.log("Error en Clase ImprimirPDF: "+ex.getMessage());
             Logger.getLogger(ImprimirPDF.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

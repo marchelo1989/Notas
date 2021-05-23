@@ -7,6 +7,7 @@ package Cl.Burgos.Notas.DAO;
 
 import Cl.Burgos.Notas.BD.BD;
 import Cl.Burgos.Notas.ENT.ClPuntos;
+import Cl.Burgos.Notas.FUN.Log;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -35,10 +36,10 @@ public class DAOPuntos {
          
         } catch (SQLException ex) {
 //            Logger.getLogger(DAOLogin.class.getName()).log(Level.SEVERE, null, ex);
-//            Log.log(ex.getMessage());
+            Log.log("Error en DAO: "+ex.getMessage());
         } catch (Exception ex) {
 //            Logger.getLogger(DAOLogin.class.getName()).log(Level.SEVERE, null, ex);
-//            Log.log(ex.getMessage());
+            Log.log("Error en DAO: "+ex.getMessage());
         }
         return lista;
     }
