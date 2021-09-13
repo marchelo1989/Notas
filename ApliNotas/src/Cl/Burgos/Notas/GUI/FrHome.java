@@ -103,7 +103,7 @@ public class FrHome extends javax.swing.JFrame {
         txtBibli2.setText(Confi.Bibli2);
         txtApec1.setText(Confi.Apec1);
         txtApec2.setText(Confi.Apec2);
-        jrbAR.setSelected(true);
+        
     }
 
     public void SLetras(JTextField a){
@@ -904,7 +904,7 @@ public class FrHome extends javax.swing.JFrame {
         txtNotaParcial.setEditable(false);
         txtDesCuentoporRetraso.setEditable(false);
         txtNotaEnsayo.setEditable(false);
-        
+        jrbAR.setSelected(true);
         btnCalcular.setVisible(false);
         
         SLetras(txtNombre);
