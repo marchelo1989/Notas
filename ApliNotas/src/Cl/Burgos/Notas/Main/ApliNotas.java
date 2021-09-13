@@ -5,6 +5,7 @@
  */
 package Cl.Burgos.Notas.Main;
 
+import Cl.Burgos.Notas.FUN.Archivo;
 import Cl.Burgos.Notas.FUN.Log;
 import Cl.Burgos.Notas.GUI.FrHome;
 
@@ -19,6 +20,7 @@ public class ApliNotas {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        new Archivo().leerARchivo();
         new Log().CrearCarpetaLog();
         new FrHome().setVisible(true);
     }

@@ -9,6 +9,7 @@ import Cl.Burgos.Notas.DAO.DAOPuntos;
 import Cl.Burgos.Notas.ENT.ClNota;
 import Cl.Burgos.Notas.ENT.ClPuntos;
 import Cl.Burgos.Notas.FUN.Actualizacion;
+import Cl.Burgos.Notas.FUN.Archivo;
 import Cl.Burgos.Notas.FUN.Confi;
 import Cl.Burgos.Notas.FUN.ImprimirPDF;
 import Cl.Burgos.Notas.FUN.Log;
@@ -22,6 +23,7 @@ import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -62,6 +64,9 @@ public class FrHome extends javax.swing.JFrame {
         jPanel6.setOpaque(false);
         jPanel7.setOpaque(false);
         jPanel8.setOpaque(false);
+        jPanel9.setOpaque(false);
+        jrbAR.setOpaque(false);
+        jrbBD.setOpaque(false);
         
 //        rellenarPrueba();
         limpiar();
@@ -98,6 +103,7 @@ public class FrHome extends javax.swing.JFrame {
         txtBibli2.setText(Confi.Bibli2);
         txtApec1.setText(Confi.Apec1);
         txtApec2.setText(Confi.Apec2);
+        jrbAR.setSelected(true);
     }
 
     public void SLetras(JTextField a){
@@ -146,6 +152,7 @@ public class FrHome extends javax.swing.JFrame {
     private void initComponents() {
 
         jComboBox1 = new javax.swing.JComboBox<>();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
@@ -203,6 +210,10 @@ public class FrHome extends javax.swing.JFrame {
         txtApec1 = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
         txtApec2 = new javax.swing.JTextField();
+        jPanel9 = new javax.swing.JPanel();
+        jrbBD = new javax.swing.JRadioButton();
+        jrbAR = new javax.swing.JRadioButton();
+        jLabel4 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -631,6 +642,41 @@ public class FrHome extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        buttonGroup1.add(jrbBD);
+        jrbBD.setText("Base de Datos");
+
+        buttonGroup1.add(jrbAR);
+        jrbAR.setText("Archivo");
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel4.setText("seleccione la forma de obtener la nota");
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addComponent(jrbBD)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jrbAR))
+                    .addComponent(jLabel4))
+                .addGap(25, 25, 25))
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jrbAR)
+                    .addComponent(jrbBD))
+                .addGap(18, 18, 18))
+        );
+
         jMenu1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jMenu1.setText("Inicio");
         jMenuBar1.add(jMenu1);
@@ -638,7 +684,7 @@ public class FrHome extends javax.swing.JFrame {
         jMenu2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jMenu2.setText("Ayuda");
 
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.ALT_MASK));
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.ALT_DOWN_MASK));
         jMenuItem1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Cl/Burgos/Notas/IMG/Update.png"))); // NOI18N
         jMenuItem1.setText("Actualizacion");
@@ -683,18 +729,25 @@ public class FrHome extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(64, 64, 64))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -914,11 +967,24 @@ public class FrHome extends javax.swing.JFrame {
                                 .setScale(numeroDecimales, RoundingMode.HALF_EVEN);
         return redondeado.doubleValue();
     }
+    List<ClPuntos> notaAR = Archivo.nombres;    
     public double nota(ClPuntos p){
         List<ClPuntos> lista= dAOPuntos.Buscar(p);
         double datos = 0;
-        for (int i = 0; i < lista.size(); i++) {
-            datos=lista.get(i).getNota();
+        if(jrbBD.isSelected()==true){
+            for (int i = 0; i < lista.size(); i++) {
+                datos=lista.get(i).getNota();
+            }
+        }
+        if(jrbAR.isSelected()==true){
+            for (int i = 0; i < notaAR.size(); i++) {
+//                System.out.println(notaAR.get(i).getNota()+"|"+notaAR.get(i).getPunto());
+                if(notaAR.get(i).getPunto()==p.getPunto()){
+                    datos=notaAR.get(i).getNota();
+//                    System.out.println(notaAR.get(i).getNota()+"|"+notaAR.get(i).getPunto());
+                }
+//                    datos=notaAR.get(i).getNota();
+            }
         }
         return datos;
     }
@@ -962,6 +1028,7 @@ public class FrHome extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCalcular;
     private javax.swing.JButton btnGenerrarPDF;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
@@ -985,6 +1052,7 @@ public class FrHome extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1004,7 +1072,10 @@ public class FrHome extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JRadioButton jrbAR;
+    private javax.swing.JRadioButton jrbBD;
     private javax.swing.JTextField txtApec1;
     private javax.swing.JTextField txtApec2;
     private javax.swing.JTextField txtBibli1;
