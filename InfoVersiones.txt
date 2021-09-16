@@ -3,3 +3,4 @@ v1.2 Protecto terminado calcula notas y genera informes en pdf sobre la nota
 v1.3 Implementacion de BD para calcular la nota correciones de errores y arreglos a algunas funciones
 v1.4 Mejoras en la interfaz de los menú, implementación de registro de errores archivo LOG, arreglos al código de actualización y implementación de la interface de contacto 
 v1.5 Implementacion del calculo de notas calcular la nota por medio de archivo o BD
+v1.6 Implementacion de la vista WEB permite visualizar el resumen en el navegador WEB

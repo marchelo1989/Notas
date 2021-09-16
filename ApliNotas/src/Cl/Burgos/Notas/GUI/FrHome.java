@@ -103,7 +103,7 @@ public class FrHome extends javax.swing.JFrame {
         txtBibli2.setText(Confi.Bibli2);
         txtApec1.setText(Confi.Apec1);
         txtApec2.setText(Confi.Apec2);
-        
+        jrbAR.setSelected(true);
     }
 
     public void SLetras(JTextField a){
@@ -210,6 +210,7 @@ public class FrHome extends javax.swing.JFrame {
         txtApec1 = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
         txtApec2 = new javax.swing.JTextField();
+        btnVistaWEB = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
         jrbBD = new javax.swing.JRadioButton();
         jrbAR = new javax.swing.JRadioButton();
@@ -588,6 +589,13 @@ public class FrHome extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        btnVistaWEB.setText("Generar Vista WEB");
+        btnVistaWEB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVistaWEBActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -605,18 +613,21 @@ public class FrHome extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(246, 246, 246)
-                        .addComponent(btnCalcular)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnGenerrarPDF)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(170, 170, 170)
+                        .addComponent(btnCalcular, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnGenerrarPDF, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnVistaWEB, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
+                        .addGap(198, 198, 198)))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -638,7 +649,8 @@ public class FrHome extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCalcular)
                     .addComponent(btnGenerrarPDF)
-                    .addComponent(jButton1))
+                    .addComponent(jButton1)
+                    .addComponent(btnVistaWEB))
                 .addContainerGap())
         );
 
@@ -850,6 +862,35 @@ public class FrHome extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
+    private void btnVistaWEBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVistaWEBActionPerformed
+        // TODO add your handling code here:
+        String nombre=txtNombre.getText();
+        int retraso=Integer.parseInt(txtRetraso.getText());
+        int intro1=Integer.parseInt(txtintro1.getText());
+        int intro2=Integer.parseInt(txtintro2.getText());
+        int intro3=Integer.parseInt(txtintro3.getText());
+        int Desa1=Integer.parseInt(txtDesa1.getText());
+        int Desa2=Integer.parseInt(txtDesa2.getText());
+        int Desa3= Integer.parseInt(txtDesa3.getText());
+        int Conclu1=Integer.parseInt(txtConclu1.getText());
+        int Conclu2=Integer.parseInt(txtConclu2.getText());
+        int Conclu3=Integer.parseInt(txtConclu3.getText());
+        int Bibli1=Integer.parseInt(txtBibli1.getText());
+        int Bibli2=Integer.parseInt(txtBibli2.getText());
+        int Apec1=Integer.parseInt(txtApec1.getText());
+        int Apec2=Integer.parseInt(txtApec2.getText());
+        double puntaje=Double.valueOf(txtPuntaje.getText());
+        double notaP=Double.valueOf(txtNotaParcial.getText());
+        int descuentoR=Integer.valueOf(txtDesCuentoporRetraso.getText());
+        double notaE=Double.valueOf(txtNotaEnsayo.getText());
+        String comentario=txtComentario.getText();
+        ClNota clNota = new ClNota(nombre, retraso, intro1, intro2, intro3, Desa1, Desa2, Desa3,
+            Conclu1, Conclu2, Conclu3, Bibli1, Bibli2, Apec1, Apec2,
+            puntaje, notaP, descuentoR, notaE, comentario);
+        new Archivo().CrearArchivoWEB(clNota);
+        limpiar();
+    }//GEN-LAST:event_btnVistaWEBActionPerformed
+
     public void Calcular(){
         int intro,desa,conc,cita,form;
         double puntaje,retraso,nota3;
@@ -878,6 +919,7 @@ public class FrHome extends javax.swing.JFrame {
         
         txtNotaEnsayo.setText(Double.toString(notape));
         btnGenerrarPDF.setEnabled(true);
+        btnVistaWEB.setEnabled(true);
     }
     public void limpiar(){
         txtNombre.setText("");
@@ -900,6 +942,7 @@ public class FrHome extends javax.swing.JFrame {
         txtDesCuentoporRetraso.setText("");
         txtNotaEnsayo.setText("");
         btnGenerrarPDF.setEnabled(false);
+        btnVistaWEB.setEnabled(false);
         txtPuntaje.setEditable(false);
         txtNotaParcial.setEditable(false);
         txtDesCuentoporRetraso.setEditable(false);
@@ -1028,6 +1071,7 @@ public class FrHome extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCalcular;
     private javax.swing.JButton btnGenerrarPDF;
+    private javax.swing.JButton btnVistaWEB;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
