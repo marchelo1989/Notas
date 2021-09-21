@@ -13,6 +13,7 @@ import Cl.Burgos.Notas.FUN.Archivo;
 import Cl.Burgos.Notas.FUN.Confi;
 import Cl.Burgos.Notas.FUN.ImprimirPDF;
 import Cl.Burgos.Notas.FUN.Log;
+import Cl.Burgos.Notas.FUN.Puntos;
 import java.awt.Desktop;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -64,9 +65,12 @@ public class FrHome extends javax.swing.JFrame {
         jPanel6.setOpaque(false);
         jPanel7.setOpaque(false);
         jPanel8.setOpaque(false);
-        jPanel9.setOpaque(false);
-        jrbAR.setOpaque(false);
-        jrbBD.setOpaque(false);
+        jPanel9.setVisible(false);
+        jrbAR.setVisible(false);
+        jrbBD.setVisible(false);
+//        jPanel9.setOpaque(false);
+//        jrbAR.setOpaque(false);
+//        jrbBD.setOpaque(false);
         
 //        rellenarPrueba();
         limpiar();
@@ -103,7 +107,7 @@ public class FrHome extends javax.swing.JFrame {
         txtBibli2.setText(Confi.Bibli2);
         txtApec1.setText(Confi.Apec1);
         txtApec2.setText(Confi.Apec2);
-        jrbAR.setSelected(true);
+//        jrbAR.setSelected(true);
     }
 
     public void SLetras(JTextField a){
@@ -625,7 +629,7 @@ public class FrHome extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnVistaWEB, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
                         .addGap(198, 198, 198)))
                 .addContainerGap())
         );
@@ -947,8 +951,8 @@ public class FrHome extends javax.swing.JFrame {
         txtNotaParcial.setEditable(false);
         txtDesCuentoporRetraso.setEditable(false);
         txtNotaEnsayo.setEditable(false);
-        jrbAR.setSelected(true);
-        btnCalcular.setVisible(false);
+//        jrbAR.setSelected(true);
+        btnCalcular.setVisible(true);
         
         SLetras(txtNombre);
         SNumeros2(txtRetraso);
@@ -1010,16 +1014,16 @@ public class FrHome extends javax.swing.JFrame {
                                 .setScale(numeroDecimales, RoundingMode.HALF_EVEN);
         return redondeado.doubleValue();
     }
-    List<ClPuntos> notaAR = Archivo.nombres;    
+    List<ClPuntos> notaAR = Puntos.nombres;    
     public double nota(ClPuntos p){
-        List<ClPuntos> lista= dAOPuntos.Buscar(p);
+//        List<ClPuntos> lista= dAOPuntos.Buscar(p);
         double datos = 0;
-        if(jrbBD.isSelected()==true){
-            for (int i = 0; i < lista.size(); i++) {
-                datos=lista.get(i).getNota();
-            }
-        }
-        if(jrbAR.isSelected()==true){
+//        if(jrbBD.isSelected()==true){
+//            for (int i = 0; i < lista.size(); i++) {
+//                datos=lista.get(i).getNota();
+//            }
+//        }
+//        if(jrbAR.isSelected()==true){
             for (int i = 0; i < notaAR.size(); i++) {
 //                System.out.println(notaAR.get(i).getNota()+"|"+notaAR.get(i).getPunto());
                 if(notaAR.get(i).getPunto()==p.getPunto()){
@@ -1028,7 +1032,7 @@ public class FrHome extends javax.swing.JFrame {
                 }
 //                    datos=notaAR.get(i).getNota();
             }
-        }
+//        }
         return datos;
     }
     

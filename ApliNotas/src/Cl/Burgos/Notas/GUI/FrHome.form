@@ -251,7 +251,7 @@
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Component id="btnVistaWEB" pref="124" max="32767" attributes="0"/>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton1" pref="68" max="32767" attributes="0"/>
+                          <Component id="jButton1" pref="70" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="198" max="-2" attributes="0"/>
                       </Group>
                   </Group>

@@ -25,7 +25,7 @@ import java.util.regex.Pattern;
  * @author march
  */
 public class Archivo {
-    public static List<ClPuntos> nombres = new ArrayList();
+    public static List<ClPuntos> nombres2 = new ArrayList();
     public void leerARchivo(){
         File archivo = null;
         FileReader fr = null;
@@ -49,7 +49,7 @@ public class Archivo {
                 double part1 = Double.parseDouble(parts[0]);
                 double part2 = Double.parseDouble(parts[1]);
                 ClPuntos p = new ClPuntos(part1, part2);
-                nombres.add(p);
+                nombres2.add(p);
              }
           }
           catch(Exception e){

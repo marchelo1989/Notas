@@ -4,3 +4,4 @@ v1.3 Implementacion de BD para calcular la nota correciones de errores y arreglo
 v1.4 Mejoras en la interfaz de los menú, implementación de registro de errores archivo LOG, arreglos al código de actualización y implementación de la interface de contacto 
 v1.5 Implementacion del calculo de notas calcular la nota por medio de archivo o BD
 v1.6 Implementacion de la vista WEB permite visualizar el resumen en el navegador WEB
+v1.7 Eliminacion de la bd y archivo el calculo de nota solo se calcula mediante codigo nada de bd o archivo 
